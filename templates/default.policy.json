@@ -1,0 +1,19 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "LambdaLogsAndSecrets",
+			"Effect": "Allow",
+			"Action": [
+				"secretsmanager:GetSecretValue",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents"
+			],
+			"Resource": [
+				"${SecretArn}",
+				"${LogGroupArn}",
+				"${LogGroupArn}:log-stream:*"
+			]
+		}
+	]
+}

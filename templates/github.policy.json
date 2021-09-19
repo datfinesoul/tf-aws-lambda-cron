@@ -1,0 +1,21 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [
+		{
+			"Sid": "GitHubAction",
+			"Effect": "Allow",
+			"Action": [
+				"s3:PutObject",
+				"s3:ListBucket",
+				"s3:GetObjectVersion",
+				"lambda:UpdateFunctionCode",
+				"lambda:UpdateAlias"
+			],
+			"Resource": [
+				"${S3ArtifactARN}",
+				"${S3BucketARN}",
+				"${LambdaArn}"
+			]
+		}
+	]
+}
