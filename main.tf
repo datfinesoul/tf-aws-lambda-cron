@@ -233,7 +233,7 @@ resource "aws_lambda_permission" "default" {
 resource "github_actions_secret" "github_aws_id" {
   count = local.count
 
-  repository      = "lambda-collection"
+  repository      = var.github_repository
   secret_name     = "lambda_${local.lo_name}_aws_id" # names will end up being uppercase in github
   plaintext_value = aws_iam_access_key.github[0].id
 }
@@ -241,7 +241,7 @@ resource "github_actions_secret" "github_aws_id" {
 resource "github_actions_secret" "github_aws_secret" {
   count = local.count
 
-  repository      = "lambda-collection"
+  repository      = var.github_repository
   secret_name     = "lambda_${local.lo_name}_aws_secret" # names will end up being uppercase in github
   plaintext_value = aws_iam_access_key.github[0].secret
 }
@@ -249,7 +249,7 @@ resource "github_actions_secret" "github_aws_secret" {
 resource "github_actions_secret" "github_aws_region" {
   count = local.count
 
-  repository      = "lambda-collection"
+  repository      = var.github_repository
   secret_name     = "lambda_${local.lo_name}_aws_region" # names will end up being uppercase in github
   plaintext_value = data.aws_s3_bucket.default.region
 }
@@ -257,7 +257,7 @@ resource "github_actions_secret" "github_aws_region" {
 resource "github_actions_secret" "github_s3_location" {
   count = local.count
 
-  repository      = "lambda-collection"
+  repository      = var.github_repository
   secret_name     = "lambda_${local.lo_name}_s3_bucket" # names will end up being uppercase in github
   plaintext_value = data.aws_s3_bucket.default.id
 }
@@ -265,7 +265,7 @@ resource "github_actions_secret" "github_s3_location" {
 resource "github_actions_secret" "github_s3_key" {
   count = local.count
 
-  repository      = "lambda-collection"
+  repository      = var.github_repository
   secret_name     = "lambda_${local.lo_name}_s3_key" # names will end up being uppercase in github
   plaintext_value = aws_s3_bucket_object.default[0].key
 }

@@ -27,3 +27,7 @@ variable "branches" {
   type    = set(string)
   default = ["main"]
 }
+
+variable "github_repository" {
+  type = string
+}
