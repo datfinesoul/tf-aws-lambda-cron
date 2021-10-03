@@ -2,7 +2,14 @@
 
 ## Overview
 
-An infrastructure focused Terraform module, that sets up an AWS lambda function placeholder, which is executed on a schedule, but deployed completely via GitHub.
+An infrastructure focused Terraform module, that sets up an AWS lambda function placeholder, which is executed on a schedule, and deployed completely via GitHub.
+
+This is an opinionated module, that sets up the basic infrastructure to:
+
+- Create a placeholder lambda in AWS
+- Runs the lambda on a schedule
+- Builds the lambda any way you want in GitHub actions
+- Deploys lambda to S3 using GitHub Actions coupled with automatically populated secrets for access
 
 ### Requirements
 
@@ -12,7 +19,9 @@ An infrastructure focused Terraform module, that sets up an AWS lambda function 
 | `hashicorp/aws`       | `~> 3.59`  |                                 |
 | `hashicorp/time`      | `~> 0.7.2` |                                 |
 
-## Example Use Case
+## Basic Use Example
+
+*There are fully functional ready to go examples in the [./examples](./examples) directory.*
 
 ```terraform
 module "my_lambda" {
@@ -49,27 +58,9 @@ module "my_lambda" {
   github_repository = "lambda-collection"
 }
     
-terraform {
-  required_version = "~> 1.0.0"
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-    github = {
-      source  = "integrations/github"
-      version = "~> 4.0"
-    }
-  }
-}
-
 # Need to be configured individual use case
-provider "aws" {
-  region = "ap-northeast-1"
-}
-provider "github" {
-  owner = "mygithubusername"
-}
+provider "aws" {}
+provider "github" {}
 ```
 
 ### What Gets Created In The Example
