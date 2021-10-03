@@ -30,22 +30,6 @@ locals {
   }, var.tags)
 }
 
-variable "enabled" {
-  type        = bool
-  default     = true
-  description = <<-DOC
-  Set to false to prevent resource creation or to destroy existing resource
-  DOC
-}
-
-variable "tags" {
-  type        = map(string)
-  default     = {}
-  description = <<-DOC
-  Tags to assign to all resources
-  DOC
-}
-
 variable "name" {
   type        = string
   description = <<-DOC
@@ -75,3 +59,20 @@ variable "project_namespace" {
   to grant access to them based on a project.
   DOC
 }
+
+variable "enabled" {
+  type        = bool
+  default     = true
+  description = <<-DOC
+  Set to false to prevent resource creation or to destroy existing resource
+  DOC
+}
+
+variable "tags" {
+  type        = map(string)
+  default     = {}
+  description = <<-DOC
+  Tags to assign to all resources
+  DOC
+}
+

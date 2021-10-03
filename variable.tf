@@ -22,7 +22,12 @@ variable "lambda_input" {
 variable "schedule_expression" {
   type = string
 }
+
 variable "branches" {
   type    = set(string)
   default = ["main"]
+}
+
+variable "github_repository" {
+  type = string
 }
